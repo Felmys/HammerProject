@@ -1,17 +1,16 @@
-interface artwork {
-    data: {
-    title:string,
-    artist_display:string,
-    place_of_origin:string,
-    credit_line:string,
-    artwork_type_title:string
-    }[]
+interface ArtworkResponse {
+  data: {
+    title: string;
+    artist_display: string;
+    place_of_origin: string;
+    artwork_type_title: string;
+  }[];
 }
 
 
-async function sendRequest(): Promise<artwork | []> {
+async function sendRequest(): Promise<ArtworkResponse | []> {
     try {
-        const response = await fetch("https://api.artic.edu/api/v1/artworks", {
+        const response = await fetch("https://api.artic.edu/api/v1/artworks?fields=title,artist_display,place_of_origin,artwork_type_title&limit=12", {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         })

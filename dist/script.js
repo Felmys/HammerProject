@@ -1,6 +1,6 @@
 async function sendRequest() {
     try {
-        const response = await fetch("https://api.artic.edu/api/v1/artworks", {
+        const response = await fetch("https://api.artic.edu/api/v1/artworks?fields=title,artist_display,place_of_origin,artwork_type_title&limit=12", {
             method: "GET",
             headers: { "Content-Type": "application/json" }
         });
