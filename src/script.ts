@@ -1,14 +1,14 @@
+interface ArtworkItem {
+  title: string;
+  artist_display: string;
+  place_of_origin: string;
+  artwork_type_title: string;
+}
 interface ArtworkResponse {
-  data: {
-    title: string;
-    artist_display: string;
-    place_of_origin: string;
-    artwork_type_title: string;
-  }[];
+  data: ArtworkItem[]; 
 }
 
-
-async function sendRequest(): Promise<ArtworkResponse | []> {
+async function sendRequest(): Promise<ArtworkResponse> {
     try {
         const response = await fetch("https://api.artic.edu/api/v1/artworks?fields=title,artist_display,place_of_origin,artwork_type_title&limit=12", {
             method: "GET",
@@ -20,8 +20,24 @@ async function sendRequest(): Promise<ArtworkResponse | []> {
         return await response.json();
     } catch(error) {
         console.error(error);
-        return [];
+        return {data: []};
     }
 }
-const data = await sendRequest();
-console.log(data);
+
+
+// const data = await sendRequest();
+// console.log(data);
+
+const showData = (param :ArtworkResponse):void => {
+    const main = document.querySelector("main");
+    const content = param.data.map(c=> (
+        `<div class="card">
+            <h2>${c.title}</h2>
+            <p>${c.artist_display}</p>
+            <p>${c.place_of_origin}</p>
+            <p>${c.artwork_type_title}</p>
+        </div>`
+    ))
+    main!.innerHTML = content.join("");
+}
+showData(await sendRequest());
