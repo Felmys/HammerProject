@@ -36,7 +36,8 @@ const showData = (param :ArtworkResponse):void => {
         <div class="card">
             <img src="./img/${imageNumber}.jpg" alt="${c.title}"><br>
             <h2>${c.title}</h2>
-            <p>${c.artist_display}</p>
+            <hr>
+            <p id="art-right">${c.artist_display}</p>
             <p>${c.place_of_origin}</p>
             <p>${c.artwork_type_title}</p>
         </div>`
