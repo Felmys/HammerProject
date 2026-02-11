@@ -1,0 +1,17 @@
+* {margin: 0;padding: 0; box-sizing: border-box;}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: auto;
+    gap: 2rem;
+    align-content: center;
+    align-items: center;
+    
+}
+.card {
+    display: flex;
+    width: 10rem;
+    background-color: #3C1518;
+}
