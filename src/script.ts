@@ -30,14 +30,18 @@ async function sendRequest(): Promise<ArtworkResponse> {
 
 const showData = (param :ArtworkResponse):void => {
     const main = document.querySelector("main");
-    const content = param.data.map(c=> (
-        `<div class="card">
+    const content = param.data.map((c,index,type)=> {
+        const imageNumber = index + 1;
+        return`
+        <div class="card">
+            <img src="./img/${imageNumber}.jpg" alt="${c.title}"><br>
             <h2>${c.title}</h2>
             <p>${c.artist_display}</p>
             <p>${c.place_of_origin}</p>
             <p>${c.artwork_type_title}</p>
         </div>`
-    ))
+    }
+    )
     main!.innerHTML = content.join("");
 }
 showData(await sendRequest());
