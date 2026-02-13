@@ -51,7 +51,9 @@ header img {
 
 .masodik img {
   border: .5rem solid #A44200;
+  width: 65vw;
   border-left: none;
+  border-radius: 0 50% 50% 0;
 }
 .kulso img{
   width: 10vw;
@@ -59,4 +61,9 @@ header img {
   flex-wrap: wrap;
   display: flex;
   
+}
+.elso h1{
+  text-align: right;
+  position: relative;
+  top: 30rem;
 }
