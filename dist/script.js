@@ -24,7 +24,9 @@ const showData = (param) => {
             <img src="./img/${imageNumber}.jpg" alt="${c.title}"><br>
             <h2>${c.title}</h2>
             <hr>
+            <div class="header-row">
             <p id="art-right">${c.artist_display}</p>
+            </div>
             <p>${c.place_of_origin}</p>
             <p>${c.artwork_type_title}</p>
         </div>`;
