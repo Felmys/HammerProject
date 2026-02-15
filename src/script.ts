@@ -34,7 +34,7 @@ const showData = (param: ArtworkResponse): void => {
         const imageNumber = index + 1;
         return `
         <div class="card">
-            <img src="./img/${imageNumber}.jpg" alt="${c.title}"><br>
+            <img src="./img/${imageNumber}.png" alt="${c.title}"><br>
             <h2>${c.title}</h2>
             <hr>
             <div class="header-row">
