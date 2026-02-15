@@ -49,7 +49,7 @@ body {
 
 .card h2 {
   margin: 1rem 1rem 0.5rem 1rem;
-   color: white;
+   color: white
 }
 
 .pmiddle {
@@ -82,7 +82,6 @@ body {
   height: auto;      /* KÉNYSZERÍTJÜK, hogy töltse ki a teljes magasságot! */
   object-fit: cover; /* Levágja a kilógó részeket, nem torzít */
   margin: 1.5rem 0.75rem;      /* Nincs margó, teljesen kifut a szélére */
-  border-left: 1px solid #eee; /* Opcionális elválasztó vonal */
   display: block;
   border-radius: 15px;
 }
