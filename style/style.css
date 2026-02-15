@@ -3,132 +3,163 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+body {
+  background-color: rgba(213, 137, 54);
+}
+/* --- Fő konténer --- */
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Középre igazítás */
   width: 100%;
-  gap: 1.5rem; /* A kártyák közötti rés (calc és margin helyett) */
-  padding: 1rem;
+  gap: 1.5rem;   /* 24px térköz a kártyák között */
+  padding: 1.5rem;
+  /* Fontos: Balról kezdje a sorakoztatást, így az utolsó sor nem "száll el" */
+  justify-content: flex-start; 
 }
 
-/* Kártyák alapbeállítása */
+/* ============================================================
+   KÁRTYÁK ALAPBEÁLLÍTÁSA (DESKTOP - 3 Kártya)
+   ============================================================ */
 .card, .card-v {
-  /* 3 kártya egy sorban: kb 30% szélesség, hogy maradjon hely a gap-nek */
-  flex: 0 0 30%; 
-  
-  /* Hogy ne legyen túl keskeny, ha nagyon összenyomják az ablakot */
-  min-width: 18rem; 
-  
-  border: 1px solid #ccc;
+  /* MATEK: (100% szélesség - 2db térköz) / 3 kártya */
+  /* Így milliméterre pontosan 3 fér el egy sorban. */
+  flex: 0 0 calc((100% - 3rem) / 3);
+  max-width: calc((100% - 3rem) / 3);
   box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
   border-radius: 15px;
-  background-color: #fff;
-  
-  /* Belső elrendezés (FLEXBOX): Ez akadályozza meg, hogy szétcsússzon a szöveg */
+  overflow: hidden; /* Hogy a képek sarka ne lógjon ki */
   display: flex;
-  flex-direction: column; 
-  justify-content: flex-start; /* Fentről lefelé pakol */
+  background-color: rgba(60, 21, 24);
 }
 
-/* Kép beállítások */
-.card img, .card-v img {
+/* ============================================================
+   1. SIMA KÁRTYA (.card) - Oszlopos elrendezés
+   (Kép felül, szöveg alul)
+   ============================================================ */
+.card {
+  flex-direction: column;
+}
+
+.card img {
   width: 100%;
-  height: 15rem;     /* Fix magasság (kb 240px) */
+  height: 250px;     /* Fix magasság a képeknek */
   object-fit: cover; /* Torzulásmentes kitöltés */
-  border-radius: 15px 15px 0 0;
-  display: block;    /* Hézag eltüntetése */
-}
-
-/* Cím (H2) */
-.card h2, .card-v h2 {
-  margin: 1rem 1rem 0.5rem 1rem; /* Fent, Jobb, Lent, Bal */
-  font-size: 1.25rem;
-  line-height: 1.2;
-}
-
-/* Header sor (Művész neve) */
-.header-row {
-  display: flex;
-  justify-content: flex-end; /* Jobbra igazítja a tartalmat */
-  padding: 0 1rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Művész neve - JAVÍTVA */
-#art-right {
-  /* TÖRÖLTEM a floatot és a negatív margint! Ettől csúszott össze. */
-  text-align: right;
-  font-style: italic;
-  color: #555;
-  font-size: 0.9rem;
-}
-
-/* Szöveges tartalom */
-.card .text, .card-v .text {
-  padding: 0 1rem 1rem 1rem;
-}
-
-.card p, .card-v p {
-  margin-left: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.card hr, .card-v hr {
-  border: 0;
-  border-top: 1px solid #ddd;
-  margin: 0.5rem 1rem;
-}
-
-
-
-/* ==========================================================================
-   Egyéb elemek (Header, dekoráció)
-   ========================================================================== */
-header img {
-  width: 100vw;
   display: block;
 }
 
-.masodik img {
-  border: .5rem solid #A44200;
-  width: 65vw;
-  border-left: none;
-  border-radius: 0 50% 50% 0;
+.card h2 {
+  margin: 1rem 1rem 0.5rem 1rem;
+   color: white;
 }
 
-.kulso img {
-  width: 10vw;
-  height: 10vw; 
-  object-fit: cover;
+.pmiddle {
+  margin: 0 0 1rem 1rem;
 }
-
-.elso h1 {
-  text-align: right;
-  position: relative;
-  top: 30rem; /* Ezt érdemes lenne majd csökkenteni mobil nézetben */
-}
-
-/* ==========================================================================
-   Reszponzivitás (Media Queries)
-   ========================================================================== */
-
-/* Tablet nézet (max 1024px): 2 kártya férjen el */
-@media (max-width: 1024px) {
-  .card, .card-v {
-    flex: 0 0 45%; /* Kicsit kevesebb mint 50%, hogy a gap elférjen */
-  }
-}
-
-/* Mobil nézet (max 700px): 1 kártya (egymás alatt) */
-@media (max-width: 700px) {
-  .card, .card-v {
-    flex: 0 0 100%; /* Teljes szélesség */
-    min-width: 0;   /* Hogy ne lógjon ki mobilon */
-  }
+/* ============================================================
+   2. VERTIKÁLIS KÁRTYA (.card-v) - Soros elrendezés
+   (Szöveg balra, Kép jobbra - Teljes magasságban)
+   ============================================================ */
+.card-v {
+  flex-direction: row; 
+  /* Min. magasság, de ha a szöveg több, a kártya és a kép is nőni fog */
+  min-height: 250px; 
   
+  /* FONTOS: Itt NEM szabad align-items: center-t használni, 
+     hogy a kép "stretch" (nyújtott) maradjon! */
+}
+
+/* Szöveges rész (Bal oldal) */
+.card-v .card-body {
+  flex: 1; /* Kitölti a maradék helyet a kép mellett */
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+/* Kép rész (Jobb oldal) - A JAVÍTOTT RÉSZ */
+.card-v img {
+  width: 50%;        /* A kártya szélességének 40%-a */
+  height: auto;      /* KÉNYSZERÍTJÜK, hogy töltse ki a teljes magasságot! */
+  object-fit: cover; /* Levágja a kilógó részeket, nem torzít */
+  margin: 1.5rem 0.75rem;      /* Nincs margó, teljesen kifut a szélére */
+  border-left: 1px solid #eee; /* Opcionális elválasztó vonal */
+  display: block;
+  border-radius: 15px;
+}
+
+.card-v h2 {
+  text-align: center;
+  margin:1rem 0 0.5rem 0;
+  line-height: 1.3;
+  color: white;
+}
+
+.art-right-v{
+  font-style: italic;
+  
+  text-align: center;
+  font-size: 0.85rem;
+  margin: 4rem;
+}
+
+/* ============================================================
+   EGYÉB ELEMEK (Szövegek, HR, stb.)
+   ============================================================ */
+.header-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.art-right {
+  font-style: italic;
+  
+  text-align: right;
+  font-size: 0.85rem;
+  margin:0 1rem; /* Biztos ami biztos */
+}
+
+.details-v {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.card p, .card-v p {
+  font-size: 0.85rem;
+  color: white;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 0.5rem 0;
+}
+
+/* ============================================================
+   MEDIA QUERIES (Reszponzivitás)
+   ============================================================ */
+
+/* 1. TÖRÉSPONT: TABLET / LAPTOP (1200px alatt) 
+   Itt váltunk 3-ról 2 kártyára. 
+*/
+@media (max-width: 1200px) {
+  .card, .card-v {
+    /* MATEK: (100% - 1db térköz) / 2 kártya */
+    flex: 0 0 calc((100% - 1.5rem) / 2);
+    max-width: calc((100% - 1.5rem) / 2);
+  }
+}
+
+/* 2. TÖRÉSPONT: MOBIL (768px alatt)
+   Itt váltunk 1 kártyára (teljes szélesség).
+*/
+@media (max-width: 768px) {
   .cards {
-    gap: 1rem; /* Kisebb hézag mobilon */
+    justify-content: center; /* Mobilon legyen középen */
+  }
+
+  .card, .card-v {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 }
