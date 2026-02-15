@@ -4,14 +4,14 @@
   box-sizing: border-box;
 }
 
-/* Kártyák */
+/* Kártyák ------------------------------------------------------------------------------------------------------------------------  */
 
 .cards {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
 }
-
+/* Horizontal cards */
 .card {
   flex: 0 0 600px;
   margin: 10px;
@@ -33,11 +33,43 @@
   padding: 0 20px 20px;
 }
 
+.card p:first-child {
+  text-align: right;
+}
+
 .card h2,
 p {
   margin-left: 0.5rem;
 }
 
+
+/* Vertical cards ------------------------------------------------------------------------------------------------------------------------ */
+.card-v {
+  flex: 0 0 600px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+}
+
+.card-v img {
+  max-width: 100%;
+  border-radius: 15px 15px 0 0;
+}
+
+.card-v h2 {
+  margin-top: 1rem;
+
+}
+
+.card-v .text {
+  padding: 0 20px 20px;
+}
+
+.card-v h2,
+p {
+  margin-left: 0.5rem;
+}
 #art-right {
   float: right;
   margin-top: -1.3rem;

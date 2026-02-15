@@ -16,20 +16,54 @@ async function sendRequest() {
 // const data = await sendRequest();
 // console.log(data);
 const showData = (param) => {
+    const VerticalIndexes = [1, 7, 8, 9];
+    const BadDescedIndex = [2];
     const main = document.querySelector("main");
-    const content = param.data.map((c, index, type) => {
+    if (!main)
+        return;
+    const content = param.data.map((c, index) => {
         const imageNumber = index + 1;
-        return `
+        if (BadDescedIndex.includes(imageNumber)) {
+            return `
+        <div class="card">
+            <img src="./img/${imageNumber}.png" alt="${c.title}"><br>
+            <h2>${c.title}</h2><br>
+            <div class="header-row">
+                <p id="art-right">${c.artist_display}</p>
+            </div>
+            <hr>
+            <p>${c.place_of_origin}</p>
+            <p>${c.artwork_type_title}</p>
+        </div>`;
+        }
+        if (VerticalIndexes.includes(imageNumber)) {
+            console.log(`${c.title}`);
+            return `
+        <div class="card-v">
+            <img src="./img/${imageNumber}.png" alt="${c.title}"><br>
+            <h2>${c.title}</h2>
+            
+            <div class="header-row">
+                <p id="art-right">${c.artist_display}</p>
+            </div>
+            <hr>
+            <p>${c.place_of_origin}</p>
+            <p>${c.artwork_type_title}</p>
+        </div>`;
+        }
+        else {
+            return `
         <div class="card">
             <img src="./img/${imageNumber}.png" alt="${c.title}"><br>
             <h2>${c.title}</h2>
             <hr>
             <div class="header-row">
-            <p id="art-right">${c.artist_display}</p>
+                <p id="art-right">${c.artist_display}</p>
             </div>
             <p>${c.place_of_origin}</p>
             <p>${c.artwork_type_title}</p>
         </div>`;
+        }
     });
     main.innerHTML = content.join("");
 };
