@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 header{
-    width: 100vw;
+    width: 100%;
  }
 
  header img{
@@ -13,9 +13,29 @@ header{
  }
 
  .elso h1{
-    
+    text-align: right;
  }
 
 .masodik img{
    width: 40%;
+}
+
+#elsosz{
+   text-align: right;
+   text-align: justify;
+   gap: 2rem;
+   border: .1rem solid black;
+}
+
+.elso{
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   justify-content: right;
+}
+.kulso{
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   justify-content: right;
 }
