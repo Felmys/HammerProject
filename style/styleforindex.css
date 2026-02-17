@@ -3,40 +3,70 @@
   padding: 0;
   box-sizing: border-box;
 }
-header{
+
+header {
+  width: 100%;
+}
+
+header img {
+  width: 100%;
+  display: block;
+}
+
+/* Ez a fő tároló, ami a két oszlopot kezeli */
+.fcolumns {
+  display: flex;
+  /* A row-reverse megfordítja a sorrendet: a .masodik lesz balra, az .elso jobbra */
+  flex-direction: row-reverse; 
+  width: 100%;
+  align-items: center; /* Függőlegesen középre igazítja a szöveget a képhez képest */
+
+}
+
+/* A piros hátterű szöveges rész (jobb oldalon lesz) */
+.elso {
+  width: 50%;
+  background-color: #942525;
+  color: white;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.elso h1 {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+#elsosz {
+  text-align: justify;
+  line-height: 1.6;
+}
+
+/* A képet tartalmazó rész (bal oldalon lesz) */
+.masodik {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.masodik img {
+  width: 80%; /* Szabályozhatod a kép méretét */
+  height: auto;
+}
+
+/* A .kulso-vel nem foglalkoztam mélyen, de adtam neki egy alap paddingot */
+.kulso {
+  padding: 40px;
+  width: 100%;
+}
+
+/* Mobilnézet: egymás alá ugorjanak és a sorrend legyen eredeti */
+@media (max-width: 768px) {
+  .fcolumns {
+    flex-direction: column; /* Mobilon egymás alá teszi őket */
+  }
+  .elso, .masodik {
     width: 100%;
- }
-
- header img{
-    width: 100%;
-
- }
-
- .elso h1{
-    text-align: right;
- }
-
-.masodik img{
-   width: 40%;
-}
-
-#elsosz{
-   text-align: right;
-   text-align: justify;
-   gap: 2rem;
-   border: .1rem solid black;
-}
-
-.elso{
-   display: flex;
-   flex-wrap: wrap;
-   flex-direction: column;
-   justify-content: right;
-   width: 40%;
-}
-.kulso{
-   display: flex;
-   flex-wrap: wrap;
-   flex-direction: column;
-   justify-content: right;
+  }
 }
