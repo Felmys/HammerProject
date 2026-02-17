@@ -68,5 +68,52 @@ header img {
   }
   .elso, .masodik {
     width: 100%;
+<<<<<<< HEAD
   }
 }
+=======
+ }
+
+ header img{
+    width: 100%;
+
+ }
+
+ .elso h1{
+    text-align: right;
+ }
+
+.masodik img{
+   width: 40%;
+}
+
+#elsosz{
+   text-align: right;
+   text-align: justify;
+   gap: 2rem;
+   border: .1rem solid black;
+}
+
+.elso{
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   justify-content: right;
+   width: 40%;
+}
+.kulso{
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   justify-content: right;
+   width: 40%;
+   background-color: #c87a2c;
+}
+#masodiksz{
+   text-align: right;
+   text-align: justify;
+   gap: 2rem;
+   border: .1rem solid black;
+   
+}
+>>>>>>> 6e72a88ee3ac4ca104799ecd5ea869a3d30dd9e3
