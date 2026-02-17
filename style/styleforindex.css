@@ -32,6 +32,7 @@ header{
    flex-wrap: wrap;
    flex-direction: column;
    justify-content: right;
+   width: 40%;
 }
 .kulso{
    display: flex;
